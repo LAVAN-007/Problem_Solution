@@ -1,0 +1,35 @@
+//Minimum Size Subarray Sum
+import java.util.*;
+public class Main{
+    public int subarraySum(int t, int arr[]){
+        int i = 0;
+        int sum = 0;
+        int min = Integer.MAX_VALUE;
+        for (int j =0; j<arr.length; j++){
+            sum+=arr[j];
+            while(sum>=t){
+                int count = (j-i)+1;
+                if(count < min){
+                    min = count;
+                }
+                sum-=arr[i];
+                i++;
+            }
+        }
+        return min;
+    }
+    
+    
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0; i<n; i++){
+		    arr[i]=sc.nextInt();
+		}
+		int k = sc.nextInt();
+		Main myObj = new Main();
+		System.out.println(myObj.subarraySum(k, arr));
+		
+	}
+}
